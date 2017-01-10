@@ -142,7 +142,7 @@ namespace LHCashier
             //总优惠=原总优惠-原小计优惠
             totalPurchase.TotalPreferential -= purchase.Preferential;
             //总交易件数=原总交易件数-原小计件数
-            //totalPurchase.TotalAmount += purchase.Amount;
+            totalPurchase.TotalAmount += purchase.Amount;
             //小计金额=单价×数量×折扣
             purchase.TotalMoney = purchase.Goods.Price * purchase.Amount * purchase.Goods.DiscountRate;
             //小计总金额=单价×(数量+赠送数量)

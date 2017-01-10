@@ -16,7 +16,8 @@ namespace LHCashier.DataAccess
         /// <returns></returns>
         public static SqlConnection GetConnection()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            //string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["azureConnectionString"].ConnectionString;
             SqlConnection connection = new SqlConnection(connectionString);
             Console.WriteLine("Connected");
             return connection;

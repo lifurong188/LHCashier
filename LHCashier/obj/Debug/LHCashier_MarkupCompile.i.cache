@@ -16,5 +16,5 @@ E:\Projects\LHCashier\LHCashier\App.xaml
 15-1142226472
 ChangePriceAllWindow.xaml;CheckWindow.xaml;DiscountAllWindow.xaml;DiscountSingleWindow.xaml;NoPayPurchaseWindow.xaml;SetAmountWindow.xaml;ChangePriceWindow.xaml;MainWindow.xaml;SendWindow.xaml;
 
-True
+False
 
