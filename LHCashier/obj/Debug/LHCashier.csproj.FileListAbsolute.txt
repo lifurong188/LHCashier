@@ -50,3 +50,6 @@ D:\Projects\LHCashier\LHCashier\obj\Debug\LHCashier.csproj.GenerateResource.Cach
 D:\Projects\LHCashier\LHCashier\obj\Debug\LHCashier.exe
 D:\Projects\LHCashier\LHCashier\obj\Debug\LHCashier.pdb
 D:\Projects\LHCashier\LHCashier\obj\Debug\LHCashier.csprojResolveAssemblyReference.cache
+E:\Projects\LHCashier\LHCashier\bin\Debug\LHCashier.exe.config
+E:\Projects\LHCashier\LHCashier\obj\Debug\LHCashier.exe
+E:\Projects\LHCashier\LHCashier\obj\Debug\LHCashier.pdb

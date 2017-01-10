@@ -6,7 +6,7 @@
         xmlns:input="clr-namespace:System.Windows.Input;assembly=PresentationCore"
         xmlns:local="clr-namespace:LHCashier"
         mc:Ignorable="d"
-        Title="SendWindow" Height="80" Width="250" WindowStyle="None" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" KeyUp="Window_KeyUp">
+        Title="赠送" Height="80" Width="250" WindowStyle="None" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" KeyUp="Window_KeyUp">
     <Grid>
         <StackPanel Margin="5">
             <TextBlock Text="请输入赠送数量：" FontSize="17"/>
