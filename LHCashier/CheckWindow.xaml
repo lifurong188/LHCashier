@@ -1,0 +1,177 @@
+﻿<Window x:Class="LHCashier.CheckWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:input="clr-namespace:System.Windows.Input;assembly=PresentationCore"
+        xmlns:local="clr-namespace:LHCashier"
+        mc:Ignorable="d"
+        Title="结算" Height="450" Width="550" WindowStartupLocation="CenterScreen" WindowStyle="None" KeyUp="Window_KeyUp">
+    <Grid Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="180"/>
+        </Grid.ColumnDefinitions>
+        <!-- 应收金额 -->
+        <Border BorderBrush="#ddd" BorderThickness="1" Width="352">
+            <StackPanel Background="#f7f7f7" >
+                <TextBlock Text="应收金额：" FontSize="20"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5 20">
+                    <TextBlock Text="￥" FontSize="24" Margin="0 5 0 0"/>
+                    <TextBlock x:Name="tbShouldMoney" Text="100.00" FontSize="30" Foreground="Red" FontWeight="Bold"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <!-- 付款方式 -->
+        <TabControl x:Name="tabPayMethod" Grid.Row="1" Grid.RowSpan="2" SelectedIndex="0" BorderThickness="0">
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+            </TabControl.ItemContainerStyle>
+            <!-- 现金-->
+            <TabItem Header="现金" TabIndex="0" Width="0" Height="0">
+                <Grid Width="352">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="125"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Border BorderBrush="#ddd" BorderThickness="1" >
+                        <StackPanel Background="#f7f7f7">
+                            <TextBlock Text="实收金额：" FontSize="20"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5 20">
+                                <TextBlock Text="￥" FontSize="24" Margin="0 5 0 0"/>
+                                <TextBox x:Name="txtPaidMoney" FontSize="30" Foreground="Orange" FontWeight="Bold" PreviewKeyDown="txtPaidMoney_PreviewKeyDown"
+                                         BorderThickness="0" Background="Transparent" input:InputMethod.IsInputMethodEnabled="False" Focusable="True"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="#ddd" BorderThickness="1" Grid.Row="1" Margin="0 4 0 0">
+                        <StackPanel Background="#f7f7f7">
+                            <TextBlock Text="找零：" FontSize="20"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5 20">
+                                <TextBlock Text="￥" FontSize="24" Margin="0 5 0 0"/>
+                                <TextBlock x:Name="tbReturnMoney" Text="100.00" FontSize="30" Foreground="Green" FontWeight="Bold"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <!-- 银行卡 -->
+            <TabItem Header="银行卡" TabIndex="1" Width="0" Height="0">
+                <StackPanel Width="352" Background="#f7f7f7">
+                    <TextBlock Text="银行卡"/>
+                </StackPanel>
+            </TabItem>
+            <!-- 储值卡 -->
+            <TabItem Header="储值卡" TabIndex="2" Width="0" Height="0">
+                <StackPanel Width="352" Background="#f7f7f7">
+                    <TextBlock Text="储值卡"/>
+                </StackPanel>
+            </TabItem>
+            <!-- 积分卡 -->
+            <TabItem Header="积分卡" TabIndex="3" Width="0" Height="0">
+                <StackPanel Width="352" Background="#f7f7f7">
+                    <TextBlock Text="积分卡"/>
+                </StackPanel>
+            </TabItem>
+            <!-- 微信支付-->
+            <TabItem Header="微信支付" TabIndex="4" Width="0" Height="0">
+                <StackPanel Width="352" Background="#f7f7f7" Orientation="Horizontal">
+                    <TextBlock Text="打开微信,点击左上角的'+'号,然后选择'扫一扫',成功扫描下方二维码后输入应收金额完成转账"
+                               Width="135" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5 0"/>
+                    <Image Source="Resources/weixinpay_lh.png" Height="260"/>
+                </StackPanel>
+            </TabItem>
+            <!-- 支付宝支付-->
+            <TabItem Header="支付宝支付" TabIndex="5" Width="0" Height="0">
+                <StackPanel Width="352" Background="#f7f7f7" Orientation="Horizontal">
+                    <TextBlock Text="打开支付宝,点击左上角的'+'号,然后选择'扫一扫'或者直接点击工具栏的'扫一扫'图标,成功扫描下方二维码后输入应收金额完成转账"
+                               Width="135" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5 0"/>
+                    <Image Source="Resources/alipay_lh.jpg" Height="250"/>
+                </StackPanel>
+            </TabItem>
+            <!-- 智海员工卡 -->
+            <TabItem Header="智海员工卡" TabIndex="6" Width="0" Height="0">
+                <StackPanel Width="352" Background="#f7f7f7">
+                    <TextBlock Text="智海员工卡"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <!-- 付款方式列表 -->
+        <Border Grid.Column="1" Grid.RowSpan="3" BorderBrush="#d6dbe9" BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Content="付款方式" FontSize="16" Foreground="#fff" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" Background="DarkGray" />
+                <Label Grid.Row="1" Tag="0" x:Name="lblRMBPay" MouseLeftButtonDown="Label_MouseLeftButtonDown">
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Source="Resources/yuan.png"/>
+                        <TextBlock Text="现金          F1" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Label>
+                <Label Grid.Row="2" Tag="1" x:Name="lblBankUnion" MouseLeftButtonDown="Label_MouseLeftButtonDown">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/bankunion.png"/>
+                        <TextBlock Text="银行卡       F2" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Label>
+                <Label Grid.Row="3" Tag="2" x:Name="lblStoredVIP" MouseLeftButtonDown="Label_MouseLeftButtonDown">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/card.png" />
+                        <TextBlock Text="储值卡       F3" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Label>
+                <Label Grid.Row="4" Tag="3" x:Name="lblIntegralVIP" MouseLeftButtonDown="Label_MouseLeftButtonDown">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/vip_score.png"/>
+                        <TextBlock Text="积分卡       F4" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Label>
+                <Label Grid.Row="5" Tag="4" x:Name="lblWeiXin" MouseLeftButtonDown="Label_MouseLeftButtonDown">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/weixinzhifu.jpg" Margin="12 0 0 0"/>
+                        <TextBlock Text="   微信支付   F5" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Label>
+                <Label Grid.Row="6" Tag="5" x:Name="lblAlipay" MouseLeftButtonDown="Label_MouseLeftButtonDown">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/zhifubao.png" Margin="11 0 0 0"/>
+                        <TextBlock Text="   支付宝       F6" FontSize="16" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Label>
+                <Label Grid.Row="7" Tag="6" x:Name="lblZhiHai" MouseLeftButtonDown="Label_MouseLeftButtonDown">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/worker.png"/>
+                        <TextBlock Text="智海员工卡 F7" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Label>
+            </Grid>
+        </Border>
+
+        <!-- 返回及确认按钮 -->
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="返回 Esc" FontSize="16" Margin="1 2 2 0" Background="#d6dbe9" 
+                    BorderBrush="#006699" BorderThickness="1" x:Name="btnExit" Click="btnExit_Click"/>
+            <Button x:Name="btnPayMoney" Content="确认 Enter" Background="Green" Foreground="#fff" FontSize="16" Grid.Column="1" Margin="0 2 0 0" Click="btnPayMoney_Click"/>
+        </Grid>
+    </Grid>
+</Window>
